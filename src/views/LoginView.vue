@@ -1,0 +1,61 @@
+<template>
+  <div>
+    <container-flex :justify-content="'center'" align-items="center">
+      <el-card class="box-card" >
+        <div class="login-box">
+          <div class="login-box-title">登录</div>
+          <el-form label-width="80px"  :model="formData" ref="formRef">
+            <el-form-item label="用户名" prop="userName" >
+              <el-input v-model="formData.userName" placeholder="请输入账号"/>
+            </el-form-item>
+            <el-form-item label="密码" prop="password" >
+              <el-input v-model="formData.password"  placeholder="请输入密码"/>
+            </el-form-item>
+          </el-form>
+        </div>
+      </el-card>
+    </container-flex>
+  </div>
+</template>
+
+<script lang="ts">
+import { mapState } from 'pinia';
+import useAppStore from '../store';
+import ContainerFlex from '@/components/container/container-flex.vue';
+
+export default {
+  components: { ContainerFlex },
+  computed:{
+    ...mapState(useAppStore,['isLogin'])
+  },
+  data:():{
+    formData:ILoginInfo
+  }=>{
+    return{
+      formData:{
+        userName:'',
+        password:''
+      }
+    }
+  },
+  mounted() {
+  },
+
+};
+</script>
+
+<style lang="scss" scoped>
+.box-card{
+  width: 500px;
+  padding-bottom: 20px;
+  .login-box{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    .login-box-title{
+      margin: auto;
+      font-size: 22px;
+    }
+  }
+}
+</style>

@@ -1,0 +1,27 @@
+.main-page-enter-active{
+  animation: main-enter .8s;
+}
+.main-page-leave-to {
+  animation: main-leave .8s;
+}
+
+
+@keyframes main-enter {
+  0%{
+    transform: translate(20%,0) scale(0.8);
+    opacity: 0;
+  }
+  80%{
+    transform: scale(1.01);
+  }
+}
+@keyframes main-leave {
+  20%{
+    transform: scale(1.01);
+
+  }
+  100%{
+    transform: translate(20%,0) scale(0.8);
+    opacity: 0;
+  }
+}
