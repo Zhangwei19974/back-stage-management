@@ -1,6 +1,9 @@
 <template>
-  <div>
-    <container-flex :justify-content="'center'" align-items="center">
+  <div style="position: relative">
+    <container-flex >
+      <widget-three/>
+    </container-flex>
+    <container-flex style="position: absolute;top: 0" :justify-content="'center'" align-items="center">
       <el-card class="box-card" >
         <div class="login-box">
           <div class="login-box-title">登录</div>
@@ -11,27 +14,29 @@
             <el-form-item label="密码" prop="password" >
               <el-input v-model="formData.password"  placeholder="请输入密码"/>
             </el-form-item>
+            <el-form-item>
+              <el-button type="primary" @click="submit">登录</el-button>
+            </el-form-item>
           </el-form>
         </div>
-        test
       </el-card>
     </container-flex>
   </div>
 </template>
 
-<script lang="ts">
-import { mapState } from 'pinia';
+<script>
+import { mapActions, mapState } from 'pinia';
 import useAppStore from '../store';
 import ContainerFlex from '@/components/container/container-flex.vue';
+import WidgetThree from '@/components/widgets/widget-three.vue';
 
 export default {
-  components: { ContainerFlex },
+  components: { WidgetThree, ContainerFlex },
   computed:{
-    ...mapState(useAppStore,['isLogin'])
+    ...mapState(useAppStore,['isLogin']),
+
   },
-  data:():{
-    formData:ILoginInfo
-  }=>{
+  data:()=>{
     return{
       formData:{
         userName:'',
@@ -41,6 +46,13 @@ export default {
   },
   mounted() {
   },
+  methods:{
+    ...mapActions(useAppStore,['setIsLogin']),
+    submit(){
+      this.setIsLogin(true)
+      this.$router.push('/')
+    }
+  }
 
 };
 </script>
@@ -56,6 +68,10 @@ export default {
     .login-box-title{
       margin: auto;
       font-size: 22px;
+    }
+    .login-box__options{
+      display: flex;
+      justify-content: center;
     }
   }
 }

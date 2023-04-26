@@ -11,8 +11,11 @@ const useAppStore = defineStore({
 
   },
   actions: {
-
+    setIsLogin(data:boolean){
+      this.isLogin = data
+    }
   },
+  persist: true,
 
 })
 export default useAppStore

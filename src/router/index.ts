@@ -1,6 +1,8 @@
 import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
+import useAppStore from '@/store';
+import getPina from '@/plugins/get-pina';
 
 Vue.use(VueRouter);
 
@@ -31,9 +33,16 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes,
 });
+const pinia = getPina()
 
+const appStore = useAppStore(pinia)
 // 前置路由首位
 router.beforeEach((to, from, next)=>{
+  // 校验是否登录成功
+  if(!appStore.isLogin && to.path !=='/login'){
+    next('/login')
+    return
+  }
   next()
 })
 
