@@ -1,7 +1,8 @@
 <template>
   <div style="position: relative;width: 100%;">
     <container-flex >
-      <widget-three/>
+      <!--      <widget-three ref="three"/>-->
+      <login-three-bgc/>
     </container-flex>
     <container-flex style="position: absolute;top: 0" :justify-content="'center'" align-items="center">
       <el-card class="box-card" >
@@ -26,12 +27,13 @@
 
 <script>
 import { mapActions, mapState } from 'pinia';
-import useAppStore from '../store';
+import useAppStore from '@/store';
 import ContainerFlex from '@/components/container/container-flex.vue';
-import WidgetThree from '@/components/widgets/widget-three.vue';
+
+import LoginThreeBgc from '@/views/LoginView/components/login-three-bgc.vue'
 
 export default {
-  components: { WidgetThree, ContainerFlex },
+  components: {  ContainerFlex,LoginThreeBgc },
   computed:{
     ...mapState(useAppStore,['isLogin']),
 

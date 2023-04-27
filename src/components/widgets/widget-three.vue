@@ -11,7 +11,6 @@ import {  PerspectiveCamera, Scene, WebGLRenderer } from 'three';
 
 let dom:HTMLDivElement
 let mainDom:HTMLDivElement
-// let renderer = new WebGLRenderer()
 
 export default Vue.extend({
   components: { ContainerFlex },
@@ -23,7 +22,6 @@ export default Vue.extend({
     };
   },
   mounted() {
-    console.log('asdasd');
     mainDom = (this.$refs.threeMainRef as any).$el
     dom = this.$refs.threeRef as HTMLDivElement
     this.initTree()
@@ -33,7 +31,6 @@ export default Vue.extend({
       let width = mainDom.offsetWidth
       let height = mainDom.offsetHeight
       this.camera = new PerspectiveCamera(75,width/height,1,1000)
-
       this.renderer.setSize(width,height)
       dom.appendChild(this.renderer.domElement)
       this.renderer.render(this.scene,this.camera)
