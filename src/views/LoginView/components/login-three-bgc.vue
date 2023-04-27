@@ -14,10 +14,10 @@ export default Vue.extend({
   components: { ContainerFlex, WidgetThree },
   mounted() {
     let threeRef= this.$refs.threeRef
-    console.log(threeRef);
     let { renderer,camera,scene } = threeRef
     // threeRef.scene!.background = new Color('#ff0000')
-    renderer.setClearColor('#428bca',1.0)
+    renderer.setClearColor('#ff0000', 0.4);
+    renderer.render(scene,camera)
     // console.log(this.$refs.threeRef);
   },
   methods:{
