@@ -1,33 +1,51 @@
 <template>
-  <container-flex ref="threeRef"/>
+  <container-flex ref="threeMainRef">
+    <div ref="threeRef"/>
+  </container-flex>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
 import ContainerFlex from '@/components/container/container-flex.vue';
-import { Camera, PerspectiveCamera, Scene, WebGLRenderer } from 'three';
+import {  PerspectiveCamera, Scene, WebGLRenderer } from 'three';
+
+let dom:HTMLDivElement
+let mainDom:HTMLDivElement
+// let renderer = new WebGLRenderer()
 
 export default Vue.extend({
   components: { ContainerFlex },
+  data:function() {
+    return {
+      renderer : new WebGLRenderer(),
+      scene: new Scene(),
+      camera:new PerspectiveCamera()
+    };
+  },
   mounted() {
-    let dom = (this.$refs.threeRef as any).$el
-    console.log(this.$refs.threeRef);
+    console.log('asdasd');
+    mainDom = (this.$refs.threeMainRef as any).$el
+    dom = this.$refs.threeRef as HTMLDivElement
+    this.initTree()
+  },
+  methods:{
+    initTree(){
+      let width = mainDom.offsetWidth
+      let height = mainDom.offsetHeight
+      this.camera = new PerspectiveCamera(75,width/height,1,1000)
 
-    let observer = new ResizeObserver((e)=>{
-      console.log('Asdasd',e[0].borderBoxSize[0]);
-    })
-    observer.observe(dom,{box:'border-box'})
-
-
-    console.log(dom.offsetHeight,dom.offsetWidth);
-    let width = dom.offsetWidth
-    let height = dom.offsetHeight
-    let scene = new Scene()
-    let camera = new PerspectiveCamera(75,width/height,1,1000)
-    let renderer  = new WebGLRenderer()
-    renderer.setSize(width,height)
-    dom.appendChild(renderer.domElement)
-    renderer.render(scene,camera)
+      this.renderer.setSize(width,height)
+      dom.appendChild(this.renderer.domElement)
+      this.renderer.render(this.scene,this.camera)
+      this.initWatchBoxResize()
+    },
+    initWatchBoxResize(){
+      let observer = new ResizeObserver((e)=>{
+        let boxSize = e[0].borderBoxSize[0]
+        boxSize.blockSize && boxSize.inlineSize&& this.renderer.setSize( boxSize.inlineSize,boxSize.blockSize)
+      })
+      observer.observe(mainDom,{box:'border-box'})
+    }
   }
 });
 </script>

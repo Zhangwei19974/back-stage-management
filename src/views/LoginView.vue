@@ -1,5 +1,5 @@
 <template>
-  <div style="position: relative">
+  <div style="position: relative;width: 100%;">
     <container-flex >
       <widget-three/>
     </container-flex>
