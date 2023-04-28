@@ -4,8 +4,8 @@
       <!--      <widget-three ref="three"/>-->
       <login-three-bgc/>
     </container-flex>
-    <container-flex style="position: absolute;top: 0" :justify-content="'center'" align-items="center">
-      <el-card class="box-card" >
+    <container-flex style="position: absolute;top: 0;pointer-events: none" :justify-content="'center'" align-items="center">
+      <el-card class="box-card" style="pointer-events: auto" >
         <div class="login-box">
           <div class="login-box-title">登录</div>
           <el-form label-width="80px"  :model="formData" ref="formRef">
