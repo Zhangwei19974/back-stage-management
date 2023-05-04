@@ -7,6 +7,6 @@ interface IAppStoreState{
   isLogin:boolean
   token:string
   userInfo:IUserInfo
-  backRouter:RawLocation
+  isBackRouter:boolean
   keepAliveList:string[]
 }

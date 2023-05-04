@@ -8,7 +8,7 @@ const useAppStore = defineStore({
     token: '',
     isLogin: false,
     userInfo: {},
-    backRouter: '/',
+    isBackRouter: false,
     keepAliveList: []
   }),
   getters: {
@@ -24,8 +24,8 @@ const useAppStore = defineStore({
     setUserInfo(userInfo:any){
       this.userInfo = userInfo
     },
-    setBackRouter(router:RawLocation){
-      this.backRouter = router
+    setBackRouter(router:boolean){
+      this.isBackRouter = router
     },
     setKeepAliveList(keepAliveList:string[]){
       this.keepAliveList = keepAliveList
