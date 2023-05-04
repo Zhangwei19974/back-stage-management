@@ -2,7 +2,7 @@
   <div style="position: relative;width: 100%;">
     <container-flex >
       <!--      <widget-three ref="three"/>-->
-      <!--      <login-three-bgc/>-->
+      <login-three-bgc/>
     </container-flex>
     <container-flex style="position: absolute;top: 0;pointer-events: none" :justify-content="'center'" align-items="center">
       <el-card class="box-card" style="pointer-events: auto" >
@@ -36,8 +36,7 @@ import { getUserInfo, login } from '@/api';
 export default {
   components: {  ContainerFlex,
     // 异步加载组件，优化首次打开的时间
-    // LoginThreeBgc: ()=>import('@/views/LoginView/components/login-three-bgc.vue')
-
+    LoginThreeBgc: ()=>import('@/views/LoginView/components/login-three-bgc.vue')
   },
   computed: {
     ...mapState(useAppStore,['backRouter','isLogin','token','isBackRouter']),
