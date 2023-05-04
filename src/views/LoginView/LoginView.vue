@@ -72,6 +72,7 @@ export default {
           return
         }
         this.$router.push('/')
+        return
       }
       this.$message.error(msg)
       // let resData = await getUserInfo()
