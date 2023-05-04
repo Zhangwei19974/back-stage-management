@@ -2,7 +2,7 @@
   <div style="position: relative;width: 100%;">
     <container-flex >
       <!--      <widget-three ref="three"/>-->
-      <login-three-bgc/>
+      <login-three-bgc v-if="false"/>
     </container-flex>
     <container-flex style="position: absolute;top: 0;pointer-events: none" :justify-content="'center'" align-items="center">
       <el-card class="box-card" style="pointer-events: auto" >
@@ -74,7 +74,7 @@ export default {
         this.$router.push('/')
         return
       }
-      this.$message.error(msg)
+      // this.$message.error(msg)
       // let resData = await getUserInfo()
       // console.log(resData);
       // this.setIsLogin(true)
