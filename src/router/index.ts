@@ -13,9 +13,9 @@ const routes: Array<RouteConfig> = [
     component: HomeView,
   },
   {
-    path:'/login',
-    name:'Login',
-    component:()=>import('@/views/LoginView/LoginView.vue')
+    path: '/login',
+    name: 'Login',
+    component: ()=>import('@/views/LoginView/LoginView.vue')
   },
   {
     path: '/about',

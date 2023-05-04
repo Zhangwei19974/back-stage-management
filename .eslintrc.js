@@ -13,11 +13,13 @@ module.exports = {
   },
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'no-undef':'off',
+    'no-undef': 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     indent: ['error', 2], // 两个空格作为缩进
     quotes: ['error', 'single'], // 字符串采用单引号
-    '@typescript-eslint/no-empty-function':'off',
+    '@typescript-eslint/no-unused-vars': 'off',
+    '@typescript-eslint/no-empty-function': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
     'vue/html-closing-bracket-newline': [
       'error',
       {
@@ -54,6 +56,10 @@ module.exports = {
       },
       'svg': 'always',
       'math': 'always'
+    }],
+    'key-spacing': [2, {
+      'beforeColon': false,
+      'afterColon': true
     }],
     'vue/html-indent': ['error', 2, {
       'attribute': 1,

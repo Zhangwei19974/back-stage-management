@@ -8,6 +8,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "axios": "^1.4.0",
     "core-js": "^3.8.3",
     "element-ui": "^2.15.13",
     "pinia": "^2.0.35",
@@ -20,6 +21,7 @@
   },
   "devDependencies": {
     "@types/three": "^0.150.2",
+    "@types/node": "^18.15.11",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.4.0",
     "@vue/cli-plugin-babel": "~5.0.0",

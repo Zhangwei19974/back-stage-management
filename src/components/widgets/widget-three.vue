@@ -14,7 +14,7 @@ let mainDom:HTMLDivElement
 
 export default Vue.extend({
   components: { ContainerFlex },
-  data:function():{
+  data: function():{
     renderer: WebGLRenderer
     scene: Scene
     camera:PerspectiveCamera
@@ -25,10 +25,10 @@ export default Vue.extend({
     return {
       renderer: new WebGLRenderer(),
       scene: new Scene(),
-      camera:new PerspectiveCamera(),
-      animationLoop:[],
-      width:0,
-      height:0
+      camera: new PerspectiveCamera(),
+      animationLoop: [],
+      width: 0,
+      height: 0
     };
   },
   mounted() {
@@ -36,7 +36,7 @@ export default Vue.extend({
     dom = this.$refs.threeRef as HTMLDivElement
     this.initTree()
   },
-  methods:{
+  methods: {
     initTree(){
       this.width = mainDom.offsetWidth
       this.height = mainDom.offsetHeight
@@ -55,9 +55,10 @@ export default Vue.extend({
         this.height = boxSize.blockSize
         boxSize.blockSize && boxSize.inlineSize&& this.renderer.setSize( boxSize.inlineSize,boxSize.blockSize)
         this.camera.aspect = this.width/this.height
+        this.$emit('resize')
         this.camera.updateProjectionMatrix()
       })
-      observer.observe(mainDom,{box:'border-box'})
+      observer.observe(mainDom,{box: 'border-box'})
     },
     initAnimation(){
       // 自动场景加载

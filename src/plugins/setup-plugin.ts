@@ -5,6 +5,6 @@ import Vue from 'vue';
 export default function (){
   Vue.use(ElementUI)
   return{
-    pinia:getPina()
+    pinia: getPina()
   }
 }

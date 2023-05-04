@@ -31,28 +31,39 @@ import useAppStore from '@/store';
 import ContainerFlex from '@/components/container/container-flex.vue';
 
 import LoginThreeBgc from '@/views/LoginView/components/login-three-bgc.vue'
+import { login } from '@/api';
 
 export default {
+  // eslint-disable-next-line vue/no-unused-components
   components: {  ContainerFlex,LoginThreeBgc },
-  computed:{
-    ...mapState(useAppStore,['isLogin']),
+  computed: {
+    ...mapState(useAppStore,['backRouter','isLogin','token']),
 
   },
-  data:()=>{
+  data: ()=>{
     return{
-      formData:{
-        userName:'',
-        password:''
+      formData: {
+        userName: '',
+        password: ''
       }
     }
   },
   mounted() {
   },
-  methods:{
-    ...mapActions(useAppStore,['setIsLogin']),
-    submit(){
-      this.setIsLogin(true)
-      this.$router.push('/')
+  methods: {
+    ...mapActions(useAppStore,['setIsLogin','setToken']),
+    async submit(){
+      let res = await login(this.formData)
+      console.log(res);
+      let {code,data} = res
+      if(code === 200){
+        this.setToken(data.token)
+        this.setIsLogin(true)
+        // this.token = data.token
+        console.log(data);
+        this.$router.go(-1)
+      }
+      // this.setIsLogin(true)
     }
   }
 

@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png" >
-    <el-button @click="handleClick">asdjo</el-button>
+    <el-button @click="handleClick">预留大屏展示</el-button>
   </div>
 </template>
 

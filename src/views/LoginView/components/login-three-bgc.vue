@@ -23,9 +23,9 @@ import snowFlake from './images/snowflake.png'
 import { map } from 'core-js/internals/array-iteration';
 export default Vue.extend({
   components: { ContainerFlex, WidgetThree },
-  data:()=>{
+  data: ()=>{
     return {
-      addAnimation:null
+      addAnimation: null
     }
   },
   mounted() {
@@ -38,19 +38,19 @@ export default Vue.extend({
     for (let i = 0;i<1000;i++){
       group.add(this.getSnowflakeSprite(10))
     }
-    let axesHelper = new AxesHelper(150)
-    scene.add(axesHelper)
+    // let axesHelper = new AxesHelper(150)
+    // scene.add(axesHelper)
     scene.add(group)
     camera.lookAt(1,height/2,0)
     this.initMouseHover()
   },
-  methods:{
+  methods: {
     getSnowflakeSprite(time=2){
       let {height } = this.$refs.threeRef
       let texture = new TextureLoader().load(snowFlake)
       let sprintMaterial = new SpriteMaterial({
-        map:texture,
-        color:'#ffffff'
+        map: texture,
+        color: '#ffffff'
       })
       let sprite = new Sprite(sprintMaterial)
 
