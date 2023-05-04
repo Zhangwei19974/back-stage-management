@@ -40,7 +40,6 @@ export default {
   },
   computed: {
     ...mapState(useAppStore,['backRouter','isLogin','token','isBackRouter']),
-
   },
   data: ()=>{
     return{
