@@ -30,12 +30,15 @@ import { mapActions, mapState } from 'pinia';
 import useAppStore from '@/store';
 import ContainerFlex from '@/components/container/container-flex.vue';
 
-import LoginThreeBgc from '@/views/LoginView/components/login-three-bgc.vue'
+// import LoginThreeBgc from '@/views/LoginView/components/login-three-bgc.vue'
 import { getUserInfo, login } from '@/api';
 
 export default {
-  // eslint-disable-next-line vue/no-unused-components
-  components: {  ContainerFlex,LoginThreeBgc },
+  components: {  ContainerFlex,
+    // 异步加载组件，优化首次打开的时间
+    LoginThreeBgc: ()=>import('@/views/LoginView/components/login-three-bgc.vue')
+
+  },
   computed: {
     ...mapState(useAppStore,['backRouter','isLogin','token','isBackRouter']),
 
