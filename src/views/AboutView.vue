@@ -12,5 +12,7 @@ export default {
       name: 'asdasd',
     };
   },
+  destroyed() {
+  }
 };
 </script>

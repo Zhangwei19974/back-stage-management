@@ -1,8 +1,9 @@
 import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
-import HomeView from '../views/HomeView.vue';
+import MainView from '@/views/MainView/MainView.vue';
 import useAppStore from '@/store';
 import getPina from '@/plugins/get-pina';
+import mainRoutes from '@/router/main-routes';
 
 Vue.use(VueRouter);
 
@@ -10,7 +11,11 @@ const routes: Array<RouteConfig> = [
   {
     path: '/',
     name: 'home',
-    component: HomeView,
+    component: MainView,
+    redirect: '/home',
+    children: [
+      ...mainRoutes
+    ]
   },
   {
     path: '/login',
