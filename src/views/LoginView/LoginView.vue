@@ -2,7 +2,7 @@
   <div style="position: relative;width: 100%;">
     <container-flex >
       <!--      <widget-three ref="three"/>-->
-      <login-three-bgc v-if="false"/>
+      <login-three-bgc v-if="true"/>
     </container-flex>
     <container-flex style="position: absolute;top: 0;pointer-events: none" :justify-content="'center'" align-items="center">
       <el-card class="box-card" style="pointer-events: auto" >

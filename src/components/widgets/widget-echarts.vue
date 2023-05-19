@@ -5,17 +5,17 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Prop, Vue } from 'vue-property-decorator';
 import * as echarts from 'echarts';
-import {debounce} from 'lodash'
-
+import { debounce } from 'lodash'
 @Component({
   components: {},
 })
 export default class HomeView extends Vue {
+  @Prop({type: Object,default: ()=>({})}) options:any
   private test = debounce((e,echart)=>{
     echart.resize()
-  })
+  },1000)
   private mounted(){
     this.initEcharts()
   }
@@ -26,21 +26,7 @@ export default class HomeView extends Vue {
     // let dom = document.getElementById('echarts-container')!
     let dom = this.$refs.container as HTMLDivElement
     let echart =echarts.init(dom)
-    echart.setOption({
-      xAxis: {
-        type: 'category',
-        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-      },
-      yAxis: {
-        type: 'value'
-      },
-      series: [
-        {
-          data: [150, 230, 224, 218, 135, 147, 260],
-          type: 'line'
-        }
-      ]
-    })
+    echart.setOption(this.options)
     let observer = new ResizeObserver(e=>this.test(e,echart))
     observer.observe(dom)
   }

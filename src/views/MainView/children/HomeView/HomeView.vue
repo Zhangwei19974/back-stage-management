@@ -7,7 +7,7 @@
       asdasd
     </div>
     <div>
-      asdasd
+      <widget-echarts :options="options"/>
     </div>
   </div>
 </template>
@@ -15,11 +15,27 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import HomeEcharts from '@/views/MainView/children/HomeView/components/HomeEcharts.vue';
+import WidgetEcharts from '@/components/widgets/widget-echarts.vue';
 
 @Component({
-  components: { HomeEcharts },
+  components: { WidgetEcharts, HomeEcharts },
 })
 export default class HomeView extends Vue {
+  private options = {
+    xAxis: {
+      type: 'category',
+      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+    },
+    yAxis: {
+      type: 'value'
+    },
+    series: [
+      {
+        data: [150, 230, 224, 218, 135, 147, 260],
+        type: 'line'
+      }
+    ]
+  }
   handleClick(){
     this.$router.push('/about')
   }
