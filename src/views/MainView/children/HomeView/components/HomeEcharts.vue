@@ -7,13 +7,14 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import * as echarts from 'echarts';
-import {debounce} from 'lodash'
+import {debounce} from 'lodash';
+import {ECharts} from 'echarts';
 
 @Component({
   components: {},
 })
 export default class HomeView extends Vue {
-  private test = debounce((e,echart)=>{
+  private test = debounce((e:any,echart:ECharts)=>{
     echart.resize()
   })
   private mounted(){

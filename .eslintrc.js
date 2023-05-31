@@ -14,6 +14,7 @@ module.exports = {
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-undef': 'off',
+    '@typescript-eslint/no-non-null-assertion': 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     indent: ['error', 2], // 两个空格作为缩进
     quotes: ['error', 'single'], // 字符串采用单引号
