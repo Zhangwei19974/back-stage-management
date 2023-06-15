@@ -58,14 +58,19 @@ export default {
   methods: {
     ...mapActions(useAppStore,['setIsLogin','setToken']),
     async submit(){
+      //测试账号登录
+      if(this.formData.userName === 'test' && this.formData.password === '123456'){
+        this.setToken('data.token')
+        this.setIsLogin(true)
+        this.$router.push('/')
+        return
+      }
+      // 调用登录接口
       let res = await login(this.formData)
-      console.log(res);
       let {code,msg,data} = res
       if(code === 200){
         this.setToken(data.token)
         this.setIsLogin(true)
-        // this.token = data.token
-        console.log(data);
         if(this.isBackRouter){
           this.$router.go(-1)
           return
@@ -73,22 +78,16 @@ export default {
         this.$router.push('/')
         return
       }
-      // this.$message.error(msg)
-      // let resData = await getUserInfo()
-      // console.log(resData);
-      // this.setIsLogin(true)
     },
     handleKeydown(){
       this.$refs.formRef.validate((isValid,fields)=>{
-        console.log(isValid,fields);
         if(isValid){
           this.submit()
           return
         }
+        // 自动定位到未校验通过的元素
         let notValidList = this.$refs.formRef.$slots.default.filter(e=>e.componentOptions.propsData.prop in fields)
         notValidList[0].componentInstance.$children[1].focus()
-        console.log(notValidList);
-        console.log(this.$refs.formRef);
       })
     }
   }

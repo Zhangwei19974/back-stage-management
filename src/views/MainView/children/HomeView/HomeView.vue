@@ -5,6 +5,7 @@
     </div>
     <div class="main">
       asdasd
+      <el-button @click="test">asdasd</el-button>
     </div>
     <div>
       <widget-echarts :options="options"/>
@@ -16,6 +17,7 @@
 import { Component, Vue } from 'vue-property-decorator';
 import HomeEcharts from '@/views/MainView/children/HomeView/components/HomeEcharts.vue';
 import WidgetEcharts from '@/components/widgets/widget-echarts.vue';
+import {request} from '@/utils';
 
 @Component({
   components: { WidgetEcharts, HomeEcharts },
@@ -38,6 +40,10 @@ export default class HomeView extends Vue {
   }
   handleClick(){
     this.$router.push('/about')
+  }
+  test(){
+    console.log('asdasd')
+    request({url: '/google',method: 'get'})
   }
 }
 </script>
